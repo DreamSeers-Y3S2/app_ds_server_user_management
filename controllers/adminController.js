@@ -1,13 +1,10 @@
 const asyncHandler = require("express-async-handler");
 const Admin = require("../models/adminModel");
-// const {} = require("../../routes/adminRoutes");
-// const {} = require("../routes/trainerRoutes");
-// const {} = require("../routes/customerRoutes");
 const generateToken = require("../utils/generateToken");
 const bcrypt = require("bcryptjs");
 
 const registerAdmin = asyncHandler(async (req, res) => {
-	const { name, dob, nic, telephone, address, email, password, pic } = req.body;
+	const { name, telephone, address, email, password, pic } = req.body;
 
 	const adminExists = await Admin.findOne({ email });
 	if (adminExists) {

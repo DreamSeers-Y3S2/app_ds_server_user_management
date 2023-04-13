@@ -25,13 +25,11 @@ router.route("/view").get(protect, getAdminProfile);
 router.route("/edit").put(protect, updateAdminProfile);
 
 //Routes for Vendor account operations admin end
-router.route("/vendor/register").post(protect, registerVendor);
 router.route("/vendor/profile/view/:_id").get(protect, getVendorProfileById).delete(protect, deleteVendorProfileById);
 router.route("/vendor/profile/edit/:_id").put(protect, updateVendorProfileById);
 router.route("/vendors").get(protect, getVendors);
 
 //Routes for Customer account operations admin end
-router.route("/customer/register").post(protect, registerCustomer);
 router
 	.route("/customer/profile/view/:_id")
 	.get(protect, getCustomerProfileById)
