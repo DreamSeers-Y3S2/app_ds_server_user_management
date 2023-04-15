@@ -39,6 +39,10 @@ const vendorSchema = mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		businessRegNumber: {
+			type: String,
+			required: true,
+		},
 		description: {
 			type: String,
 			required: true,
