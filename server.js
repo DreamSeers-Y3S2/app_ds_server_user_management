@@ -15,6 +15,7 @@ app.get("/", (req, res) => {
 	res.send("User API is Running");
 });
 
+//user management routes
 app.use("/admin", adminRoutes);
 app.use("/customer", customerRoutes);
 app.use("/vendor", vendorRoutes);

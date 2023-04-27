@@ -3,6 +3,7 @@ const Admin = require("../models/adminModel");
 const generateToken = require("../utils/generateToken");
 const bcrypt = require("bcryptjs");
 
+// register user as a admin
 const registerAdmin = asyncHandler(async (req, res) => {
 	const { name, telephone, address, email, password, pic } = req.body;
 
@@ -44,6 +45,7 @@ const registerAdmin = asyncHandler(async (req, res) => {
 	}
 });
 
+// authenticate the admin
 const authAdmin = asyncHandler(async (req, res) => {
 	const { email, password } = req.body;
 
@@ -73,6 +75,7 @@ const authAdmin = asyncHandler(async (req, res) => {
 	}
 });
 
+// view admin profile
 const getAdminProfile = asyncHandler(async (req, res) => {
 	const admin = await Admin.findById(req.admin._id);
 
@@ -84,6 +87,7 @@ const getAdminProfile = asyncHandler(async (req, res) => {
 	}
 });
 
+// update admin profile
 const updateAdminProfile = asyncHandler(async (req, res) => {
 	const admin = await Admin.findById(req.admin._id);
 

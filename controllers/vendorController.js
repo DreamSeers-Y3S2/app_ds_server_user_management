@@ -3,6 +3,7 @@ const Vendor = require("../models/vendorModel");
 const generateToken = require("../utils/generateToken");
 const bcrypt = require("bcryptjs");
 
+// register vendor profile
 const registerVendor = asyncHandler(async (req, res) => {
 	const {
 		name,
@@ -64,7 +65,7 @@ const registerVendor = asyncHandler(async (req, res) => {
 		throw new Error("Vendor Registration Failed !");
 	}
 });
-
+//authenticate vendor profile
 const authVendor = asyncHandler(async (req, res) => {
 	const { email, password } = req.body;
 
@@ -97,12 +98,13 @@ const authVendor = asyncHandler(async (req, res) => {
 		});
 	}
 });
-
+//get all of vendors list
 const getVendors = asyncHandler(async (req, res) => {
 	const vendors = await Vendor.find();
 	res.json(vendors);
 });
 
+// view vendor profile by vendor
 const getVendorProfile = asyncHandler(async (req, res) => {
 	const vendor = await Vendor.findById(req.vendor._id);
 
@@ -114,6 +116,7 @@ const getVendorProfile = asyncHandler(async (req, res) => {
 	}
 });
 
+// view vendor profile by admin
 const getVendorProfileById = asyncHandler(async (req, res) => {
 	const vendor = await Vendor.findById(req.params._id);
 
@@ -125,6 +128,7 @@ const getVendorProfileById = asyncHandler(async (req, res) => {
 	}
 });
 
+//update vendor profile by customer
 const updateVendorProfile = asyncHandler(async (req, res) => {
 	const vendor = await Vendor.findById(req.vendor._id);
 
@@ -165,6 +169,7 @@ const updateVendorProfile = asyncHandler(async (req, res) => {
 	}
 });
 
+//update vendor profile by admin
 const updateVendorProfileById = asyncHandler(async (req, res) => {
 	const vendor = await Vendor.findById(req.params._id);
 
@@ -205,6 +210,7 @@ const updateVendorProfileById = asyncHandler(async (req, res) => {
 	}
 });
 
+// delete vendor profile by  vendor
 const deleteVendorProfile = asyncHandler(async (req, res) => {
 	const vendor = await Vendor.findById(req.vendor._id);
 
@@ -217,6 +223,7 @@ const deleteVendorProfile = asyncHandler(async (req, res) => {
 	}
 });
 
+// delete vendor profile by admin
 const deleteVendorProfileById = asyncHandler(async (req, res) => {
 	const vendor = await Vendor.findById(req.params._id);
 

@@ -1,9 +1,9 @@
 const asyncHandler = require("express-async-handler");
 const Customer = require("../models/customerModel");
-// const {} = require("../routes/customerRoutes");
 const generateToken = require("../utils/generateToken");
 const bcrypt = require("bcryptjs");
 
+// register  customer profile
 const registerCustomer = asyncHandler(async (req, res) => {
 	const { name, telephone, address, email, password, pic } = req.body;
 
@@ -44,6 +44,7 @@ const registerCustomer = asyncHandler(async (req, res) => {
 	}
 });
 
+//authenticate customer profile
 const authCustomer = asyncHandler(async (req, res) => {
 	const { email, password } = req.body;
 
@@ -73,11 +74,13 @@ const authCustomer = asyncHandler(async (req, res) => {
 	}
 });
 
+//get all of customers list
 const getCustomers = asyncHandler(async (req, res) => {
 	const customers = await Customer.find();
 	res.json(customers);
 });
 
+// view customer profile by customer
 const getCustomerProfile = asyncHandler(async (req, res) => {
 	const customer = await Customer.findById(req.customer._id);
 
@@ -89,6 +92,7 @@ const getCustomerProfile = asyncHandler(async (req, res) => {
 	}
 });
 
+// view customer profile by admin
 const getCustomerProfileById = asyncHandler(async (req, res) => {
 	const customer = await Customer.findById(req.params._id);
 
@@ -100,6 +104,7 @@ const getCustomerProfileById = asyncHandler(async (req, res) => {
 	}
 });
 
+//update customer profile by customer
 const updateCustomerProfile = asyncHandler(async (req, res) => {
 	const customer = await Customer.findById(req.customer._id);
 
@@ -130,6 +135,7 @@ const updateCustomerProfile = asyncHandler(async (req, res) => {
 	}
 });
 
+//update customer profile by admin
 const updateCustomerProfileById = asyncHandler(async (req, res) => {
 	const customer = await Customer.findById(req.params._id);
 
@@ -160,6 +166,7 @@ const updateCustomerProfileById = asyncHandler(async (req, res) => {
 	}
 });
 
+// delete customer profile by  customer
 const deleteCustomerProfile = asyncHandler(async (req, res) => {
 	const customer = await Customer.findById(req.customer._id);
 
@@ -172,6 +179,7 @@ const deleteCustomerProfile = asyncHandler(async (req, res) => {
 	}
 });
 
+// delete customer profile by admin
 const deleteCustomerProfileById = asyncHandler(async (req, res) => {
 	const customer = await Customer.findById(req.params._id);
 
