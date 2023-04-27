@@ -1,7 +1,6 @@
 const express = require("express");
 const { registerAdmin, authAdmin, getAdminProfile, updateAdminProfile } = require("../controllers/adminController");
 const {
-	registerVendor,
 	getVendorProfileById,
 	deleteVendorProfileById,
 	updateVendorProfileById,
@@ -12,8 +11,6 @@ const {
 	updateCustomerProfileById,
 	deleteCustomerProfileById,
 	getCustomerProfileById,
-	registerCustomer,
-	getCustomerCount,
 } = require("../controllers/customerController");
 const { protect } = require("../middleware/authAdminMiddleware");
 const router = express.Router();
